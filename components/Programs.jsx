@@ -9,6 +9,11 @@ import {
   useClipboard,
   useColorModeValue,
   VStack,
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from "@chakra-ui/react";
 import React from "react";
 import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
@@ -24,7 +29,7 @@ export default function Programs() {
         p={{ base: 5, lg: 16 }}
       >
         <Box>
-          <VStack spacing={{ base: 4, md: 8, lg: 20 }}>
+          <VStack spacing={{ base: 4, md: 8 }}>
             <Heading
               fontSize={{
                 base: "4xl",
@@ -33,6 +38,37 @@ export default function Programs() {
             >
               Programação
             </Heading>
+            <Flex position={"sticky"} top="100px">
+              <Menu>
+                <MenuButton bg="blue.500" as={Button} px="10px" ml="5px">
+                  Dia
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Segunda</MenuItem>
+                  <MenuItem>Terça</MenuItem>
+                  <MenuItem>Quarta</MenuItem>
+                  <MenuItem>Quinta</MenuItem>
+                  <MenuItem>Sexta</MenuItem>
+                  <MenuItem>Sabádo</MenuItem>
+                  <MenuItem>Domingo</MenuItem>
+                </MenuList>
+              </Menu>
+
+              <Menu>
+                <MenuButton bg="blue.500" as={Button} px="10px" ml="5px">
+                  Cidade
+                </MenuButton>
+                <MenuList>
+                  <MenuItem>Segunda</MenuItem>
+                  <MenuItem>Terça</MenuItem>
+                  <MenuItem>Quarta</MenuItem>
+                  <MenuItem>Quinta</MenuItem>
+                  <MenuItem>Sexta</MenuItem>
+                  <MenuItem>Sabádo</MenuItem>
+                  <MenuItem>Domingo</MenuItem>
+                </MenuList>
+              </Menu>
+            </Flex>
             <SimpleGrid columns={[1, 5]} spacing={3}>
               {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
                 <Card />
@@ -47,7 +83,7 @@ export default function Programs() {
 
 export function Card() {
   return (
-    <Box w="220px" shadow="lg" rounded="lg" overflow="hidden">
+    <Box w={["100%", "220px"]} shadow="lg" rounded="lg" overflow="hidden">
       <Image
         w="full"
         h={"150px"}

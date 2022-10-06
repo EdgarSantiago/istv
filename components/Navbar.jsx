@@ -55,19 +55,19 @@ export default function Navbar() {
               <Link href="/">
                 <Button variant="ghost">Início</Button>
               </Link>
-              <Link href="/categories">
+              <Link href="/#programacao">
                 <Button variant="ghost">Programação</Button>
               </Link>
 
-              <Link href="/about">
+              <Link href="/#isn">
                 <Button variant="ghost">Notícias</Button>
               </Link>
 
-              <Link href="/post/post">
+              <Link href="/#contato">
                 <Button variant="ghost">Contato</Button>
               </Link>
 
-              <Link href="/post/post">
+              <Link href="/aovivo">
                 <Button variant="ghost" color="red.400">
                   Ao Vivo
                 </Button>
@@ -80,7 +80,7 @@ export default function Navbar() {
             <ThemeToggleButton />
             <Show below="1000px">
               <Menu>
-                <MenuButton as={Button} px="10px" ml="10px">
+                <MenuButton as={Button} px="10px" ml="5px">
                   <HamburgerIcon w={4} h={4} />
                 </MenuButton>
                 <MenuList>

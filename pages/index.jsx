@@ -18,15 +18,25 @@ export default function Home() {
         )})`}
         maxW="100%"
       >
-        <Hero1 />
+        <section>
+          <Hero1 />
+        </section>
         <Divider />
-        <BasicStatistics />
+        <section>
+          <BasicStatistics />
+        </section>
         <Divider />
-        <Programs />
+        <section id="programacao">
+          <Programs />
+        </section>
         <Divider />
-        <IsnList />
+        <section id="isn">
+          <IsnList />
+        </section>
         <Divider />
-        <ContactFormWithSocialButtons />
+        <section id="contato">
+          <ContactFormWithSocialButtons />
+        </section>
       </Box>
     </Layout>
   );

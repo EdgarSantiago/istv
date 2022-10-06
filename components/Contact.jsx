@@ -193,7 +193,15 @@ export default function ContactFormWithSocialButtons() {
                     />
                   </FormControl>
 
-                  <Button bg="isnBlue" color="white" isFullWidth>
+                  <Button
+                    bg="isnBlue"
+                    color={"white"}
+                    shadow="md"
+                    _hover={{
+                      bg: "black",
+                    }}
+                    isFullWidth
+                  >
                     Enviar mensagem
                   </Button>
                 </VStack>

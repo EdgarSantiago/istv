@@ -31,7 +31,12 @@ function StatsCard(props) {
 
 export default function BasicStatistics() {
   return (
-    <Box maxW="7xl" mx={"auto"} py={"200px"} px={{ base: 2, sm: 12, md: 17 }}>
+    <Box
+      maxW="7xl"
+      mx={"auto"}
+      py={["50px", "200px"]}
+      px={{ base: 2, sm: 12, md: 17 }}
+    >
       <chakra.h1
         textAlign={"center"}
         fontSize={"4xl"}
