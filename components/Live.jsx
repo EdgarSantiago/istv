@@ -20,11 +20,19 @@ import dynamic from "next/dynamic";
 const ReactPlayer = dynamic(() => import("react-player"), {
   ssr: false,
 });
+import { motion } from "framer-motion";
 
 export default function Live() {
   return (
     <Container maxW={"7xl"} py={["50px", "100px"]}>
       <Stack
+        initial={{
+          opacity: 0,
+          y: 100,
+        }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition="0.3s linear"
+        as={motion.div}
         align={"center"}
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
@@ -46,7 +54,6 @@ export default function Live() {
                 position: "absolute",
                 bottom: 1,
                 left: 0,
-                bg: "red.400",
                 zIndex: -1,
               }}
             >
@@ -77,7 +84,7 @@ export default function Live() {
                 bg: "black",
               }}
             >
-              Abrir AO VIVO
+              Assinar ISTVPLAY
             </Button>
           </Stack>
         </Stack>
@@ -88,16 +95,13 @@ export default function Live() {
           position={"relative"}
           w={"full"}
         >
-          <Blob
-            w={"150%"}
-            h={"150%"}
-            position={"absolute"}
-            top={"-20%"}
-            left={0}
-            zIndex={-1}
-            color={useColorModeValue("red.50", "red.400")}
-          />
           <Box
+            as={motion.div}
+            drag="x"
+            dragConstraints={{ left: -500, right: 0 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition="0.2s linear"
             position={"relative"}
             height={"300px"}
             rounded={"2xl"}
@@ -117,6 +121,7 @@ export default function Live() {
               top={"50%"}
               transform={"translateX(-50%) translateY(-50%)"}
             />
+
             <AspectRatio ratio={16 / 8}>
               <ReactPlayer
                 height="100%"

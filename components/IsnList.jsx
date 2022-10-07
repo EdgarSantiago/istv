@@ -14,6 +14,9 @@ import {
   Container,
   VStack,
 } from "@chakra-ui/react";
+
+import { motion } from "framer-motion";
+
 import React, { useState, useEffect } from "react";
 
 const BlogTags = (props) => {
@@ -88,46 +91,56 @@ const IsnList = () => {
   }, []);
   return (
     <Container maxW={"7xl"} py={["50px", "200px"]}>
-      <Heading
-        fontSize={{
-          base: "4xl",
-          md: "5xl",
+      <Box
+        initial={{
+          opacity: 0,
+          y: 100,
         }}
-        textAlign={"center"}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition="0.3s linear"
+        as={motion.div}
       >
-        Portal ISN
-      </Heading>
-      <Wrap spacing="30px" marginTop="10">
-        {fivePost.map((post) => (
-          <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
-            <Link href={post.link}>
-              <Box w="100%">
-                <Box borderRadius="lg" overflow="hidden">
-                  <Link
-                    textDecoration="none"
-                    _hover={{ textDecoration: "none" }}
-                  >
-                    <Image
-                      transform="scale(1.0)"
-                      src={post.laimg}
-                      alt="some text"
-                      objectFit="contain"
-                      width="100%"
-                      transition="0.3s ease-in-out"
-                      _hover={{
-                        transform: "scale(1.05)",
-                      }}
-                    />
-                  </Link>
+        <Heading
+          fontSize={{
+            base: "4xl",
+            md: "5xl",
+          }}
+          textAlign={"center"}
+        >
+          Portal ISN
+        </Heading>
+        <Wrap spacing="30px" marginTop="10">
+          {fivePost.map((post) => (
+            <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
+              <Link href={post.link}>
+                <Box w="100%">
+                  <Box borderRadius="lg" overflow="hidden">
+                    <Link
+                      textDecoration="none"
+                      _hover={{ textDecoration: "none" }}
+                    >
+                      <Image
+                        transform="scale(1.0)"
+                        src={post.laimg}
+                        alt="some text"
+                        objectFit="contain"
+                        width="100%"
+                        transition="0.3s ease-in-out"
+                        _hover={{
+                          transform: "scale(1.05)",
+                        }}
+                      />
+                    </Link>
+                  </Box>
+                  <Heading textAlign={"center"} fontSize="xl" marginTop="4">
+                    {post.title}
+                  </Heading>
                 </Box>
-                <Heading textAlign={"center"} fontSize="xl" marginTop="4">
-                  {post.title}
-                </Heading>
-              </Box>
-            </Link>
-          </WrapItem>
-        ))}
-      </Wrap>
+              </Link>
+            </WrapItem>
+          ))}
+        </Wrap>
+      </Box>
     </Container>
   );
 };

@@ -30,7 +30,7 @@ export default function Hero1() {
             y: 100,
           }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition="0.5s linear"
+          transition="0.3s linear"
           as={motion.div}
           textAlign={"center"}
           spacing={{ base: 8, md: 14 }}

@@ -8,6 +8,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { motion } from "framer-motion";
+
 function StatsCard(props) {
   const { title, stat } = props;
   return (
@@ -34,8 +36,15 @@ export default function BasicStatistics() {
     <Box
       maxW="7xl"
       mx={"auto"}
-      py={["50px", "200px"]}
+      py={["50px", "100px"]}
       px={{ base: 2, sm: 12, md: 17 }}
+      initial={{
+        opacity: 0,
+        y: 100,
+      }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition="0.3s linear"
+      as={motion.div}
     >
       <chakra.h1
         textAlign={"center"}
