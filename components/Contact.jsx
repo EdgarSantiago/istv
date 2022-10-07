@@ -180,7 +180,9 @@ export default function ContactFormWithSocialButtons() {
                       <FormLabel>Name</FormLabel>
 
                       <InputGroup>
-                        <InputLeftElement children={<BsPerson />} />
+                        <InputLeftElement>
+                          <BsPerson />
+                        </InputLeftElement>
                         <Input
                           type="text"
                           name="name"
@@ -194,7 +196,9 @@ export default function ContactFormWithSocialButtons() {
                       <FormLabel>Número</FormLabel>
 
                       <InputGroup>
-                        <InputLeftElement children={<BsPerson />} />
+                        <InputLeftElement>
+                          <BsPerson />
+                        </InputLeftElement>
                         <Input
                           onChange={(e) => setPhone(e.target.value)}
                           type="number"
@@ -208,7 +212,9 @@ export default function ContactFormWithSocialButtons() {
                       <FormLabel>Email</FormLabel>
 
                       <InputGroup>
-                        <InputLeftElement children={<MdOutlineEmail />} />
+                        <InputLeftElement>
+                          <MdOutlineEmail />
+                        </InputLeftElement>
                         <Input
                           onChange={(e) => setEmail(e.target.value)}
                           type="email"
