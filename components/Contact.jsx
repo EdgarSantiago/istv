@@ -102,7 +102,7 @@ export default function ContactFormWithSocialButtons() {
                 direction={{ base: "row", md: "column" }}
               >
                 <Tooltip
-                  label={hasCopied ? "Email Copied!" : "Copy Email"}
+                  label={hasCopied ? "Email Copiado!" : "Copiar Email"}
                   closeOnClick={false}
                   hasArrow
                 >
@@ -177,7 +177,7 @@ export default function ContactFormWithSocialButtons() {
                 <form onSubmit={handleSubmit}>
                   <VStack spacing={5}>
                     <FormControl isRequired>
-                      <FormLabel>Name</FormLabel>
+                      <FormLabel>Nome</FormLabel>
 
                       <InputGroup>
                         <InputLeftElement>

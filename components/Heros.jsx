@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero1() {
   return (
@@ -57,25 +58,20 @@ export default function Hero1() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <Button
-              color="white"
-              bg={"isnBlue"}
-              rounded={"full"}
-              px={6}
-              _hover={{
-                bg: "#253c9b",
-              }}
-            >
-              Assinar
-            </Button>
-            <Button
-              variant={"link"}
-              colorScheme={"blue"}
-              color="isnBlue"
-              size={"sm"}
-            >
-              Saiba Mais
-            </Button>
+            <Link href="https://istvplay.com.br/">
+              <Button
+                color="white"
+                bg={"isnBlue"}
+                rounded={"full"}
+                px={6}
+                _hover={{
+                  bg: "#253c9b",
+                }}
+              >
+                Assinar
+              </Button>
+            </Link>
+
             <Box>
               <Icon
                 as={Arrow}
