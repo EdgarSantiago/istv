@@ -11,6 +11,8 @@ import {
   createIcon,
 } from "@chakra-ui/react";
 
+import { motion } from "framer-motion";
+
 export default function Hero1() {
   return (
     <>
@@ -23,7 +25,13 @@ export default function Hero1() {
 
       <Container maxW={"4xl"}>
         <Stack
-          as={Box}
+          initial={{
+            opacity: 0,
+            y: 100,
+          }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition="0.5s linear"
+          as={motion.div}
           textAlign={"center"}
           spacing={{ base: 8, md: 14 }}
           py={{ base: 20, md: 36 }}

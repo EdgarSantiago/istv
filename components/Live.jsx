@@ -23,7 +23,7 @@ const ReactPlayer = dynamic(() => import("react-player"), {
 
 export default function Live() {
   return (
-    <Container maxW={"7xl"}>
+    <Container maxW={"7xl"} py={["50px", "100px"]}>
       <Stack
         align={"center"}
         spacing={{ base: 8, md: 10 }}

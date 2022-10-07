@@ -40,6 +40,7 @@ export default function ContactFormWithSocialButtons() {
   const { hasCopied, onCopy } = useClipboard("example@example.com");
   return (
     <Flex
+      py={["50px", "100px"]}
       bg={useColorModeValue("gray.100", "#111111")}
       align="center"
       justify="center"

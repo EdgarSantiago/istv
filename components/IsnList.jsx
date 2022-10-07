@@ -87,13 +87,12 @@ const IsnList = () => {
     getRss();
   }, []);
   return (
-    <Container maxW={"7xl"} p="12">
+    <Container maxW={"7xl"} py={["50px", "200px"]}>
       <Heading
         fontSize={{
           base: "4xl",
           md: "5xl",
         }}
-        marginTop="5"
         textAlign={"center"}
       >
         Portal ISN
