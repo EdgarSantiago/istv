@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   Heading,
@@ -15,6 +14,7 @@ import {
   Container,
   VStack,
 } from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
 
 const BlogTags = (props) => {
   return (
@@ -47,6 +47,45 @@ export const BlogAuthor = (props) => {
 };
 
 const IsnList = () => {
+  const [rssUrl, setRssUrl] = useState(
+    "https://isnportal.com.br/mundo/feed/gn"
+  );
+  const [items, setItems] = useState([]);
+
+  const getRss = async () => {
+    const urlRegex =
+      /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
+    if (!urlRegex.test(rssUrl)) {
+      return;
+    }
+
+    const res = await fetch(`https://api.allorigins.win/get?url=${rssUrl}`);
+
+    const { contents } = await res.json();
+
+    const feed = new window.DOMParser().parseFromString(contents, "text/xml");
+
+    const items = feed.querySelectorAll("item");
+
+    const htmlParser = new DOMParser();
+
+    const elHtmlDoc = htmlParser
+      .parseFromString(contents, "text/html")
+      .getElementsByClassName("type:primaryImage");
+
+    const feedItems = [...items].map((el, index) => ({
+      link: el.querySelector("link").innerHTML,
+      title: el.querySelector("title").innerHTML,
+      laimg: elHtmlDoc.item(index).getAttribute("src"),
+    }));
+    setItems(feedItems);
+  };
+
+  var fivePost = items.slice(0, 3);
+
+  useEffect(() => {
+    getRss();
+  }, []);
   return (
     <Container maxW={"7xl"} p="12">
       <Heading
@@ -60,38 +99,33 @@ const IsnList = () => {
         Portal ISN
       </Heading>
       <Wrap spacing="30px" marginTop="10">
-        {[1, 2, 3].map(() => (
+        {fivePost.map((post) => (
           <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
-            <Box w="100%">
-              <Box borderRadius="lg" overflow="hidden">
-                <Link textDecoration="none" _hover={{ textDecoration: "none" }}>
-                  <Image
-                    transform="scale(1.0)"
-                    src={
-                      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-                    }
-                    alt="some text"
-                    objectFit="contain"
-                    width="100%"
-                    transition="0.3s ease-in-out"
-                    _hover={{
-                      transform: "scale(1.05)",
-                    }}
-                  />
-                </Link>
+            <Link href={post.link}>
+              <Box w="100%">
+                <Box borderRadius="lg" overflow="hidden">
+                  <Link
+                    textDecoration="none"
+                    _hover={{ textDecoration: "none" }}
+                  >
+                    <Image
+                      transform="scale(1.0)"
+                      src={post.laimg}
+                      alt="some text"
+                      objectFit="contain"
+                      width="100%"
+                      transition="0.3s ease-in-out"
+                      _hover={{
+                        transform: "scale(1.05)",
+                      }}
+                    />
+                  </Link>
+                </Box>
+                <Heading textAlign={"center"} fontSize="xl" marginTop="4">
+                  {post.title}
+                </Heading>
               </Box>
-              <Heading fontSize="xl" marginTop="4">
-                <Link textDecoration="none" _hover={{ textDecoration: "none" }}>
-                  Some blog title
-                </Link>
-              </Heading>
-              <Text as="p" fontSize="md" marginTop="2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book.
-              </Text>
-            </Box>
+            </Link>
           </WrapItem>
         ))}
       </Wrap>

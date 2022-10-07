@@ -5,6 +5,7 @@ import ContactFormWithSocialButtons from "../components/Contact";
 import Hero1 from "../components/Heros";
 import IsnList from "../components/IsnList";
 import Layout from "../components/Layout";
+import Live from "../components/Live";
 import BasicStatistics from "../components/OurCompany";
 import Programs from "../components/Programs";
 
@@ -23,12 +24,16 @@ export default function Home() {
         </section>
         <Divider />
         <section>
+          <Live />
+        </section>
+        <Divider />
+        <section>
           <BasicStatistics />
         </section>
         <Divider />
-        <section id="programacao">
+        {/*<section id="programacao">
           <Programs />
-        </section>
+        </section>*/}
         <Divider />
         <section id="isn">
           <IsnList />

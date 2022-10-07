@@ -18,10 +18,8 @@ import {
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import ThemeToggleButton from "./theme-toggle-button";
 
-import { MdLiveTv } from "react-icons/md";
-
 import Link from "next/link";
-import { AiOutlineSearch } from "react-icons/ai";
+
 export default function Navbar() {
   return (
     <>
@@ -54,9 +52,6 @@ export default function Navbar() {
             <HStack spacing="20px">
               <Link href="/">
                 <Button variant="ghost">Início</Button>
-              </Link>
-              <Link href="/#programacao">
-                <Button variant="ghost">Programação</Button>
               </Link>
 
               <Link href="/#isn">

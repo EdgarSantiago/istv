@@ -15,12 +15,100 @@ import {
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import React from "react";
-import { BsGithub, BsLinkedin, BsPerson, BsTwitter } from "react-icons/bs";
-import { MdEmail, MdOutlineEmail } from "react-icons/md";
+import axios from "axios";
+
+import React, { useState, useEffect } from "react";
 
 export default function Programs() {
-  const { hasCopied, onCopy } = useClipboard("example@example.com");
+  const [data, setData] = useState([]);
+  const [dayT, setDayT] = useState("Seg");
+  const [city, setCity] = useState("baixada");
+  const [laCity, setLaCity] = useState("Baixada");
+  const [elDay, setelDay] = useState("Segunda");
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("https://istv-backend.herokuapp.com/days/type/" + dayT + "/" + city)
+      .then((response) => {
+        setData(response.data);
+        setLoading(false);
+      });
+  }, [dayT, setDayT, city, setCity]);
+
+  const handleChange = (teste) => (e) => {
+    setDayT(teste);
+    if (teste === dayT) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
+    switch (teste) {
+      case "Seg":
+        setelDay("Segunda");
+        break;
+
+      case "Ter":
+        setelDay("Terça");
+        break;
+
+      case "Qua":
+        setelDay("Quarta");
+        break;
+
+      case "Qui":
+        setelDay("Quinta");
+        break;
+
+      case "Sex":
+        setelDay("Sexta");
+        break;
+
+      case "Sab":
+        setelDay("Sábado");
+        break;
+
+      case "Dom":
+        setelDay("Domingo");
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const handleChange2 = (teste) => (e) => {
+    setCity(teste);
+    if (teste === city) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
+    switch (teste) {
+      case "baixada":
+        setLaCity("Baixada santista");
+        break;
+
+      case "jf":
+        setLaCity("Minas Gerais");
+        break;
+
+      case "lnorte":
+        setLaCity("Litoral norte");
+        break;
+
+      case "streaming":
+        setLaCity("Nacional");
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <Flex align="center" justify="center" id="contact">
       <Box
@@ -38,9 +126,15 @@ export default function Programs() {
             >
               Programação
             </Heading>
-            <Flex position={"sticky"} top="100px">
+            <Flex position={"sticky"} top="80px">
               <Menu>
-                <MenuButton bg="blue.500" as={Button} px="10px" ml="5px">
+                <MenuButton
+                  bg="blue.500"
+                  as={Button}
+                  px="10px"
+                  ml="5px"
+                  shadow={"sm"}
+                >
                   Dia
                 </MenuButton>
                 <MenuList>
@@ -55,7 +149,13 @@ export default function Programs() {
               </Menu>
 
               <Menu>
-                <MenuButton bg="blue.500" as={Button} px="10px" ml="5px">
+                <MenuButton
+                  bg="blue.500"
+                  as={Button}
+                  px="10px"
+                  ml="5px"
+                  shadow={"sm"}
+                >
                   Cidade
                 </MenuButton>
                 <MenuList>
@@ -69,10 +169,21 @@ export default function Programs() {
                 </MenuList>
               </Menu>
             </Flex>
-            <SimpleGrid columns={[1, 5]} spacing={3}>
-              {[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map(() => (
-                <Card />
-              ))}
+            <SimpleGrid columns={[1, 4]} spacing={3}>
+              {data.map((eldata, index) => {
+                return (
+                  <>
+                    <Card
+                      cardDay={elDay}
+                      cardTime={eldata.timeDay}
+                      cardTitle={eldata.episodeName}
+                      imgLink={
+                        "https://istv-backend.herokuapp.com" + eldata.episodeImg
+                      }
+                    />
+                  </>
+                );
+              })}
             </SimpleGrid>
           </VStack>
         </Box>
@@ -81,29 +192,52 @@ export default function Programs() {
   );
 }
 
-export function Card() {
+export function Card({ cardDay, cardTime, cardTitle, imgLink }) {
   return (
-    <Box w={["100%", "220px"]} shadow="lg" rounded="lg" overflow="hidden">
-      <Image
-        w="full"
-        h={"150px"}
-        fit="cover"
-        src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        alt="avatar"
-      />
+    <Box
+      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
+      w={["100%", "220px"]}
+      shadow="lg"
+      rounded="lg"
+      overflow="hidden"
+    >
+      <Image w="full" h={"100px"} fit="cover" src={imgLink} alt="avatar" />
 
       <Box py={2} textAlign="center">
-        <Link
+        <Heading
           display="block"
-          fontSize="lg"
+          fontSize="sm"
+          color="isnBlue"
+          _dark={{
+            color: "#a2a0f8",
+          }}
+          fontWeight="bold"
+        >
+          {cardTitle}
+        </Heading>
+        <Heading
+          display="block"
+          fontSize="md"
+          my={1}
           color="gray.800"
           _dark={{
             color: "white",
           }}
           fontWeight="bold"
         >
-          Teste
-        </Link>
+          {cardDay}
+        </Heading>
+        <Heading
+          display="block"
+          fontSize="md"
+          color="gray.800"
+          _dark={{
+            color: "white",
+          }}
+          fontWeight="bold"
+        >
+          {cardTime}
+        </Heading>
       </Box>
     </Box>
   );
