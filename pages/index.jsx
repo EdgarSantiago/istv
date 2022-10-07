@@ -9,8 +9,19 @@ import Live from "../components/Live";
 import BasicStatistics from "../components/OurCompany";
 import Programs from "../components/Programs";
 import Script from "next/script";
+import { useEffect } from "react";
 
 export default function Home() {
+  useEffect(() => {
+    window.addEventListener("blur", function () {
+      document.head.title = "ga";
+    });
+
+    window.addEventListener("focus", function () {
+      document.head.title = "xxx";
+    });
+  }, []);
+
   return (
     <Layout>
       <Box

@@ -8,6 +8,11 @@ import {
   localStorageManager,
 } from "@chakra-ui/react";
 
+import Router from "next/router";
+
+// Won't catch the error!
+Router.events.on("routeChangeError", console.log);
+
 function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>

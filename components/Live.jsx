@@ -24,7 +24,7 @@ import { motion } from "framer-motion";
 
 export default function Live() {
   return (
-    <Container maxW={"7xl"} py={["50px", "100px"]}>
+    <Container maxW={"7xl"} py={["25px", "100px"]}>
       <Stack
         initial={{
           opacity: 0,
@@ -97,14 +97,10 @@ export default function Live() {
         >
           <Box
             as={motion.div}
-            drag="x"
             dragConstraints={{ left: -500, right: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition="0.2s linear"
             position={"relative"}
-            height={"300px"}
-            rounded={"2xl"}
+            height={"100%"}
+            rounded={"xl"}
             boxShadow={"2xl"}
             width={"full"}
             overflow={"hidden"}

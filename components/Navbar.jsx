@@ -82,10 +82,15 @@ export default function Navbar() {
                   <Link href="/">
                     <MenuItem>Início</MenuItem>
                   </Link>
-                  <MenuItem>Programação</MenuItem>
-                  <MenuItem>Notícias</MenuItem>
-                  <MenuItem>Contato</MenuItem>
-                  <MenuItem>Ao Vivo</MenuItem>
+                  <Link href="/#isn">
+                    <MenuItem>Notícias</MenuItem>
+                  </Link>
+                  <Link href="/#contato">
+                    <MenuItem>Contato</MenuItem>
+                  </Link>
+                  <Link href="/#aovivo">
+                    <MenuItem>Ao Vivo</MenuItem>
+                  </Link>
                 </MenuList>
               </Menu>
             </Show>
