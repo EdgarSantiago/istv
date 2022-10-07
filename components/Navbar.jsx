@@ -62,7 +62,7 @@ export default function Navbar() {
                 <Button variant="ghost">Contato</Button>
               </Link>
 
-              <Link href="/aovivo">
+              <Link href="/#aovivo">
                 <Button variant="ghost" color="red.400">
                   Ao Vivo
                 </Button>

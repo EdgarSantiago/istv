@@ -9,7 +9,7 @@ import {
   Link,
   Heading,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
 const SocialButton = ({ children, label, href }) => {
   return (
@@ -58,13 +58,22 @@ export default function Footer() {
           </Link>
         </Text>
         <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
+          <SocialButton
+            label={"Twitter"}
+            href={"https://www.facebook.com/ISTVdigital/"}
+          >
+            <FaFacebook />
           </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
+          <SocialButton
+            label={"YouTube"}
+            href={"https://www.youtube.com/c/ISTVdigital"}
+          >
             <FaYoutube />
           </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
+          <SocialButton
+            label={"Instagram"}
+            href={"https://www.instagram.com/istvdigital"}
+          >
             <FaInstagram />
           </SocialButton>
         </Stack>

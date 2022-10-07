@@ -35,13 +35,20 @@ export default function NavLinks() {
           <Spacer />
           <HStack spacing={"20px"} textAlign="center">
             <Box>
-              <Image src="/istvplay.png" height="19px" width="95px" />
+              <Link href="https://isnportal.com.br/">
+                <Image src="/logo.png" height="38px" width="52px" />
+              </Link>
             </Box>
             <Box>
-              <Image mr="3px" src="/logoistv.png" height="38px" width="42px" />
+              <Link href="https://istvplay.com.br/">
+                <Image src="/istvplay.png" height="19px" width="95px" />
+              </Link>
             </Box>
+
             <Box>
-              <Image src="/onfmwhite.png" height="35px" width="38px" />
+              <Link href="https://www.radioonfm.com.br/">
+                <Image src="/onfmwhite.png" height="35px" width="38px" />
+              </Link>
             </Box>
           </HStack>
           <Spacer />

@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 import Live from "../components/Live";
 import BasicStatistics from "../components/OurCompany";
 import Programs from "../components/Programs";
+import Script from "next/script";
 
 export default function Home() {
   return (
@@ -19,11 +20,46 @@ export default function Home() {
         )})`}
         maxW="100%"
       >
+        <Head>
+          <title>ISTV - Início</title>
+          <link rel="shortcut icon" href="/logoistv.png" />
+          <meta charSet="UTF-8" />
+          <meta
+            name="description"
+            content="A ISTV é a emissora dos clássicos do cinema, das séries de TV e dos desenhos que é sucesso no Digital e no HD."
+          />
+          <meta
+            name="keywords"
+            content="istv, emissora, tv, clássicos, desenhos antigos, desenhos, filmes antigos, filmes"
+          />
+          <meta
+            name="google-site-verification"
+            content="o81p3pVBa_JzKUeOBsguMNqWSoHvgfnoTKtjh5-9An8"
+          />
+          <meta name="author" content="Edgar Santiago" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+        </Head>
+
+        <Script
+          id="my-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+  window.addEventListener("load", function(){
+    const el = document.getElementById('btn');
+    el.click();
+});
+`,
+          }}
+        />
         <section>
           <Hero1 />
         </section>
         <Divider />
-        <section>
+        <section id="aovivo">
           <Live />
         </section>
         <Divider />
