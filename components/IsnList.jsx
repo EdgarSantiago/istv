@@ -110,8 +110,11 @@ const IsnList = () => {
           Portal ISN
         </Heading>
         <Wrap spacing="30px" marginTop="10">
-          {fivePost.map((post) => (
-            <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
+          {fivePost.map((post, index) => (
+            <WrapItem
+              key={index}
+              width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}
+            >
               <Link href={post.link}>
                 <Box w="100%">
                   <Box borderRadius="lg" overflow="hidden">
