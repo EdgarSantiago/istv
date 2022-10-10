@@ -59,7 +59,7 @@ export default function BasicStatistics() {
           title={"Nosso sinal alcança"}
           stat={"+4,000,000 de pessoas"}
         />
-        <StatsCard title={"Em"} stat={"+32 estados do brasil"} />
+        <StatsCard title={"Em"} stat={"26 estados do brasil"} />
         <StatsCard title={"Com"} stat={"+300 filmes e séries"} />
       </SimpleGrid>
     </Box>
